@@ -36,7 +36,8 @@ await gridFile.download(fileStream)
 ```
 
 ## Examples
-Few examples are available in the [examples](examples) directory.
+- [Upload files to MongoDB GridFS with Express](https://abskmj.github.io/notes/posts/express/express-multer-mongoose-gridfile/) - Create express based APIs to upload and download files to and from MongoDB GridFS
+- [Mongoose Query Population with GridFile Schema](examples/email-attachments) - Store email attachments on GridFS and link them to an email to support Mongoose query population
 
 # Documentation
 Documentation is available at [API.md](API.md)

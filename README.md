@@ -1,4 +1,4 @@
-![npm](https://img.shields.io/npm/v/gridfile?label=NPM) ![NPM](https://img.shields.io/npm/l/gridfile?label=License) ![npm](https://img.shields.io/npm/dt/gridfile?label=Downloads)
+![npm](https://img.shields.io/npm/v/gridfile?label=NPM) ![NPM](https://img.shields.io/npm/l/gridfile?label=License) ![npm](https://img.shields.io/npm/dt/gridfile?label=Downloads) [![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&color=red&logo=GitHub)](https://github.com/abskmj/gridfile)
 
 # GridFile - Mongoose Schema for MongoDB GridFS
 GridFile is a reusable [Mongoose](https://mongoosejs.com/) schema for [MongoDB GridFS](https://docs.mongodb.com/manual/core/gridfs/). No separate database setup is needed as it uses the Mongoose connection for interacting with GridFS.

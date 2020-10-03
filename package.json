@@ -11,7 +11,7 @@
   ],
   "main": "src/gridFile.schema.js",
   "scripts": {
-    "test": "mocha --timeout 10000 test.js",
+    "test": "nyc --reporter=lcov --reporter=text mocha --timeout 10000 test.js",
     "doc": "documentation build src/gridFile.schema.js -f md > API.md"
   },
   "author": "abskmj@gmail.com",
@@ -28,6 +28,7 @@
     "memorystream": "^0.3.1",
     "mocha": "^8.1.1",
     "mongodb-memory-server": "^6.6.3",
+    "nyc": "^15.1.0",
     "standard": "^14.3.4"
   }
 }

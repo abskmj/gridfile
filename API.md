@@ -15,22 +15,26 @@
 -   [GridFile#chunkSizeBytes][11]
 -   [GridFile.getBucket][12]
     -   [Examples][13]
--   [GridFile#getUploadStream][14]
+-   [GridFile.findOneAndDelete][14]
     -   [Examples][15]
--   [GridFile#getDownloadStream][16]
+-   [GridFile.findByIdAndDelete][16]
     -   [Examples][17]
--   [GridFile#uploadStream][18]
-    -   [Parameters][19]
-    -   [Examples][20]
--   [GridFile#downloadStream][21]
-    -   [Parameters][22]
-    -   [Examples][23]
--   [GridFile#upload][24]
-    -   [Parameters][25]
-    -   [Examples][26]
--   [GridFile#download][27]
-    -   [Parameters][28]
-    -   [Examples][29]
+-   [GridFile#getUploadStream][18]
+    -   [Examples][19]
+-   [GridFile#getDownloadStream][20]
+    -   [Examples][21]
+-   [GridFile#uploadStream][22]
+    -   [Parameters][23]
+    -   [Examples][24]
+-   [GridFile#downloadStream][25]
+    -   [Parameters][26]
+    -   [Examples][27]
+-   [GridFile#upload][28]
+    -   [Parameters][29]
+    -   [Examples][30]
+-   [GridFile#download][31]
+    -   [Parameters][32]
+    -   [Examples][33]
 
 ## GridFile
 
@@ -47,61 +51,61 @@ const gridFile = new GridFile()
 
 ## GridFile#length
 
-Type: [Number][30]
+Type: [Number][34]
 
 ## GridFile#chunkSize
 
-Type: [Number][30]
+Type: [Number][34]
 
 ## GridFile#uploadDate
 
-Type: [Date][31]
+Type: [Date][35]
 
 ## GridFile#md5
 
-Type: [String][32]
+Type: [String][36]
 
 ## GridFile#filename
 
-MD5 hash is auto genarated when file is uploaded
+A MD5 hash is auto-generated when a file is uploaded
 
-Type: [String][32]
+Type: [String][36]
 
 ## GridFile#contentType
 
-Value is be used as `contentType` option when opening an upload stream: [GridFSBucket#openUploadStream][33]
+Value is be used as `contentType` option when opening an upload stream: [GridFSBucket#openUploadStream][37]
 
-Type: [String][32]
+Type: [String][36]
 
 ## GridFile#metadata
 
-Value is be used as `metadata` option when opening an upload stream: [GridFSBucket#openUploadStream][33]
+Value is be used as `metadata` option when opening an upload stream: [GridFSBucket#openUploadStream][37]
 
 Type: Any
 
 ## GridFile#aliases
 
-Value is be used as `aliases` option when opening an upload stream: [GridFSBucket#openUploadStream][33]
+Value is be used as `aliases` option when opening an upload stream: [GridFSBucket#openUploadStream][37]
 
-Type: \[[String][32]]
+Type: \[[String][36]]
 
 ## GridFile#createdAt
 
 Alias for GridFile#uploadDate
 
-Type: [Date][31]
+Type: [Date][35]
 
 ## GridFile#chunkSizeBytes
 
-Value is be used as `chunkSizeBytes` option when opening an upload stream: [GridFSBucket#openUploadStream][33]
+Value is be used as `chunkSizeBytes` option when opening an upload stream: [GridFSBucket#openUploadStream][37]
 
-Type: [Number][30]
+Type: [Number][34]
 
 ## GridFile.getBucket
 
 Get the GridFS bucket created from the Mongoose connection
 
-Type: [Function][34]
+Type: [Function][38]
 
 ### Examples
 
@@ -111,11 +115,39 @@ const bucket = GridFile.getBucket()
 
 Returns **GridFSBucket** GridFS Bucket
 
+## GridFile.findOneAndDelete
+
+Delete a file from GridFS using [GridFSBucket#delete][39]
+
+Type: [Function][38]
+
+### Examples
+
+```javascript
+const deletedFile = await GridFile.findOneAndDelete({ filename: 'image.png' })
+```
+
+Returns **[Promise][40]&lt;[GridFile][41]>** Deleted GridFile as a Promise
+
+## GridFile.findByIdAndDelete
+
+Delete a file from GridFS using [GridFSBucket#delete][39]
+
+Type: [Function][38]
+
+### Examples
+
+```javascript
+const deletedFile = await GridFile.findByIdAndDelete('some-id')
+```
+
+Returns **[Promise][40]&lt;[GridFile][41]>** Deleted GridFile as a Promise
+
 ## GridFile#getUploadStream
 
 Get a GridFS stream to upload a file
 
-Type: [Function][34]
+Type: [Function][38]
 
 ### Examples
 
@@ -129,7 +161,7 @@ Returns **GridFSBucketWriteStream** Upload Stream
 
 Get a GridFS stream to download a file
 
-Type: [Function][34]
+Type: [Function][38]
 
 ### Examples
 
@@ -143,11 +175,11 @@ Returns **GridFSBucketReadStream** Download Stream
 
 Upload a file to GridFS
 
-Type: [Function][34]
+Type: [Function][38]
 
 ### Parameters
 
--   `FileStream` **[Stream][35]** Read stream of file to upload
+-   `FileStream` **[Stream][42]** Read stream of file to upload
 
 ### Examples
 
@@ -166,13 +198,13 @@ Returns **GridFSBucketWriteStream** Upload Stream
 
 ## GridFile#downloadStream
 
-Dowload a file from GridFS
+Download a file from GridFS
 
-Type: [Function][34]
+Type: [Function][38]
 
 ### Parameters
 
--   `FileStream` **[Stream][35]** Write stream of file to download into
+-   `FileStream` **[Stream][42]** Write stream of file to download into
 
 ### Examples
 
@@ -193,12 +225,12 @@ Returns **GridFSBucketWriteStream** Download Stream
 
 Upload a file to GridFS
 
-Type: [Function][34]
+Type: [Function][38]
 
 ### Parameters
 
--   `FileStream` **[Stream][35]** Read stream of file to upload
--   `Callback` **[Function][34]** Callback function
+-   `FileStream` **[Stream][42]** Read stream of file to upload
+-   `Callback` **[Function][38]** Callback function
 
 ### Examples
 
@@ -220,18 +252,18 @@ gridFile.upload(filestream, (err, uploadedFile) => {
 })
 ```
 
-Returns **[Promise][36]&lt;[GridFile][37]>** GridFile as a Promise
+Returns **[Promise][40]&lt;[GridFile][41]>** GridFile as a Promise
 
 ## GridFile#download
 
-Dowload a file from GridFS
+Download a file from GridFS
 
-Type: [Function][34]
+Type: [Function][38]
 
 ### Parameters
 
--   `FileStream` **[Stream][35]** Write stream of file to download into
--   `Callback` **[Function][34]** Callback function
+-   `FileStream` **[Stream][42]** Write stream of file to download into
+-   `Callback` **[Function][38]** Callback function
 
 ### Examples
 
@@ -253,7 +285,7 @@ gridFile.download(fileStream, (err){
 })
 ```
 
-Returns **[Promise][36]&lt;Void>** Promise
+Returns **[Promise][40]&lt;Void>** Promise
 
 [1]: #gridfile
 
@@ -281,50 +313,60 @@ Returns **[Promise][36]&lt;Void>** Promise
 
 [13]: #examples
 
-[14]: #gridfilegetuploadstream
+[14]: #gridfilefindoneanddelete
 
 [15]: #examples-1
 
-[16]: #gridfilegetdownloadstream
+[16]: #gridfilefindbyidanddelete
 
 [17]: #examples-2
 
-[18]: #gridfileuploadstream
+[18]: #gridfilegetuploadstream
 
-[19]: #parameters
+[19]: #examples-3
 
-[20]: #examples-3
+[20]: #gridfilegetdownloadstream
 
-[21]: #gridfiledownloadstream
+[21]: #examples-4
 
-[22]: #parameters-1
+[22]: #gridfileuploadstream
 
-[23]: #examples-4
+[23]: #parameters
 
-[24]: #gridfileupload
+[24]: #examples-5
 
-[25]: #parameters-2
+[25]: #gridfiledownloadstream
 
-[26]: #examples-5
+[26]: #parameters-1
 
-[27]: #gridfiledownload
+[27]: #examples-6
 
-[28]: #parameters-3
+[28]: #gridfileupload
 
-[29]: #examples-6
+[29]: #parameters-2
 
-[30]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[30]: #examples-7
 
-[31]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+[31]: #gridfiledownload
 
-[32]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[32]: #parameters-3
 
-[33]: https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#openUploadStream
+[33]: #examples-8
 
-[34]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[34]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[35]: https://nodejs.org/api/stream.html
+[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[37]: #gridfile
+[37]: https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#openUploadStream
+
+[38]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[39]: https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#delete
+
+[40]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+[41]: #gridfile
+
+[42]: https://nodejs.org/api/stream.html

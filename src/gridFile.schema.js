@@ -38,7 +38,7 @@ const schema = new Schema({
    */
   md5: { type: String },
   /**
-   * MD5 hash is auto genarated when file is uploaded
+   * A MD5 hash is auto-generated when a file is uploaded
    * @member {String} GridFile#filename
    */
   filename: { type: String },
@@ -103,6 +103,32 @@ schema.static('getBucket', function () {
   return this.bucket
 })
 
+/**
+ * Delete a file from GridFS using [GridFSBucket#delete](https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#delete)
+ * @member {Function} GridFile.findOneAndDelete
+ * @returns {Promise<GridFile>} Deleted GridFile as a Promise
+ * @example
+ * const deletedFile = await GridFile.findOneAndDelete({ filename: 'image.png' })
+ */
+schema.static('findOneAndDelete', async function (query) {
+  const doc = await this.findOne(query)
+
+  if (doc) await this.getBucket().delete(doc._id)
+
+  return doc
+})
+
+/**
+ * Delete a file from GridFS using [GridFSBucket#delete](https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#delete)
+ * @member {Function} GridFile.findByIdAndDelete
+ * @returns {Promise<GridFile>} Deleted GridFile as a Promise
+ * @example
+ * const deletedFile = await GridFile.findByIdAndDelete('some-id')
+ */
+schema.static(`findByIdAndDelete`, function (id) {
+  return this.findOneAndDelete({ _id: id })
+})
+
 /* Document Methods */
 
 /**
@@ -161,7 +187,7 @@ schema.method('uploadStream', function (stream) {
 })
 
 /**
- * Dowload a file from GridFS
+ * Download a file from GridFS
  * @member {Function} GridFile#downloadStream
  * @param {Stream} FileStream Write stream of file to download into
  * @returns {GridFSBucketWriteStream} Download Stream
@@ -223,7 +249,7 @@ schema.method('upload', function (stream, callback) {
 })
 
 /**
- * Dowload a file from GridFS
+ * Download a file from GridFS
  * @member {Function} GridFile#download
  * @param {Stream} FileStream Write stream of file to download into
  * @param {Function} Callback Callback function

@@ -108,6 +108,21 @@ describe('Schema', () => {
       expect(stream._readableState.length).equals(uploadedFile.length)
     })
 
+    it('should delete a file from GridFS', async ()=>{
+      const file = new GridFile()
+
+      file.filename = 'package.json'
+
+      const fileStream = fs.createReadStream('./package.json')
+      const uploadedFile = await file.upload(fileStream)
+
+      const foundFile = await GridFile.findByIdAndDelete(uploadedFile.id)
+      expect(foundFile.md5).equals(uploadedFile.md5)
+
+      const search = await GridFile.findOne()
+      expect(search).to.equal(null)
+    })
+
     afterEach(async () => {
       await GridFile.deleteMany()
     })

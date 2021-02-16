@@ -1,6 +1,6 @@
 {
   "name": "gridfile",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "GridFile is a reusable Mongoose schema for MongoDB GridFS",
   "keywords": [
     "mongoose",

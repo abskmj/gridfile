@@ -29,6 +29,6 @@
     "mocha": "^8.3.0",
     "mongodb-memory-server": "^6.9.3",
     "nyc": "^15.1.0",
-    "standard": "^14.3.4"
+    "standard": "^16.0.3"
   }
 }

@@ -19,8 +19,8 @@
   "bugs": "https://github.com/abskmj/gridfile/issues",
   "repository": "github:abskmj/gridfile",
   "license": "MIT",
-  "dependencies": {
-    "mongoose": "^5.11.16"
+  "peerDependencies": {
+    "mongoose": "^5.0.0"
   },
   "devDependencies": {
     "chai": "^4.3.0",

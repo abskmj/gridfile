@@ -22,39 +22,55 @@ const schemaOptions = {
 
 const schema = new Schema({
   /**
-   * @member {Number} GridFile#length
+   * @ {Number} length
+   * @memberof GridFile
+   * @instance
    */
   length: { type: Number },
   /**
-   * @member {Number} GridFile#chunkSize
+   * @property {Number} chunkSize
+   * @memberof GridFile
+   * @instance
    */
   chunkSize: { type: Number },
   /**
-   * @member {Date} GridFile#uploadDate
+   * @property {Date} uploadDate
+   * @memberof GridFile
+   * @instance
    */
   uploadDate: { type: Date },
   /**
-   * @member {String} GridFile#md5
+   * A MD5 hash is auto-generated when a file is uploaded
+   * @property {String} md5
+   * @memberof GridFile
+   * @instance
    */
   md5: { type: String },
   /**
-   * A MD5 hash is auto-generated when a file is uploaded
-   * @member {String} GridFile#filename
+   * @property {String} filename
+   * @memberof GridFile
+   * @instance
    */
   filename: { type: String },
   /**
    * Value is be used as `contentType` option when opening an upload stream: [GridFSBucket#openUploadStream](https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#openUploadStream)
-   * @member {String} GridFile#contentType
+   * @property {String} contentType
+   * @memberof GridFile
+   * @instance
    */
   contentType: { type: String },
   /**
    * Value is be used as `metadata` option when opening an upload stream: [GridFSBucket#openUploadStream](https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#openUploadStream)
-   * @member {Any} GridFile#metadata
+   * @property {Any} metadata
+   * @memberof GridFile
+   * @instance
    */
   metadata: { type: Schema.Types.Mixed },
   /**
    * Value is be used as `aliases` option when opening an upload stream: [GridFSBucket#openUploadStream](https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#openUploadStream)
-   * @member {[String]} GridFile#aliases
+   * @property {[String]} aliases
+   * @memberof GridFile
+   * @instance
    */
   aliases: [{ type: String }]
 }, schemaOptions)
@@ -63,7 +79,9 @@ const schema = new Schema({
 
 /**
  * Alias for GridFile#uploadDate
- * @member {Date} GridFile#createdAt
+ * @member {Date} createdAt
+ * @memberof GridFile
+ * @instance
  */
 schema.virtual('createdAt').get(function () { return this.uploadDate })
 
@@ -74,7 +92,9 @@ schema.virtual('model').get(function () { return this.constructor })
 
 /**
  * Value is be used as `chunkSizeBytes` option when opening an upload stream: [GridFSBucket#openUploadStream](https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#openUploadStream)
- * @member {Number} GridFile#chunkSizeBytes
+ * @member {Number} chunkSizeBytes
+ * @memberof GridFile
+ * @instance
  */
 schema.virtual('chunkSizeBytes')
 
@@ -82,7 +102,9 @@ schema.virtual('chunkSizeBytes')
 
 /**
  * Get the GridFS bucket created from the Mongoose connection
- * @member {Function} GridFile.getBucket
+ * @method getBucket
+ * @memberof GridFile
+ * @static
  * @returns {GridFSBucket} GridFS Bucket
  * @example
  * const bucket = GridFile.getBucket()
@@ -105,7 +127,10 @@ schema.static('getBucket', function () {
 
 /**
  * Delete a file from GridFS using [GridFSBucket#delete](https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#delete)
- * @member {Function} GridFile.findOneAndDelete
+ * @function findOneAndDelete
+ * @memberof GridFile
+ * @static
+ * @param {Object} query Mongoose query
  * @returns {Promise<GridFile>} Deleted GridFile as a Promise
  * @example
  * const deletedFile = await GridFile.findOneAndDelete({ filename: 'image.png' })
@@ -120,7 +145,10 @@ schema.static('findOneAndDelete', async function (query) {
 
 /**
  * Delete a file from GridFS using [GridFSBucket#delete](https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#delete)
- * @member {Function} GridFile.findByIdAndDelete
+ * @function findByIdAndDelete
+ * @memberof GridFile
+ * @static
+ * @param {String} id Mongoose document id
  * @returns {Promise<GridFile>} Deleted GridFile as a Promise
  * @example
  * const deletedFile = await GridFile.findByIdAndDelete('some-id')
@@ -133,7 +161,9 @@ schema.static(`findByIdAndDelete`, function (id) {
 
 /**
  * Get a GridFS stream to upload a file
- * @member {Function} GridFile#getUploadStream
+ * @function getUploadStream
+ * @memberof GridFile
+ * @instance
  * @returns {GridFSBucketWriteStream} Upload Stream
  * @example
  * const uploadStream = gridFile.getUploadStream()
@@ -152,7 +182,9 @@ schema.method('getUploadStream', function () {
 
 /**
  * Get a GridFS stream to download a file
- * @member {Function} GridFile#getDownloadStream
+ * @function getDownloadStream
+ * @memberof GridFile
+ * @instance
  * @returns {GridFSBucketReadStream} Download Stream
  * @example
  * const downloadStream = gridFile.getDownloadStream()
@@ -165,7 +197,9 @@ schema.method('getDownloadStream', function () {
 
 /**
  * Upload a file to GridFS
- * @member {Function} GridFile#uploadStream
+ * @function uploadStream
+ * @memberof GridFile
+ * @instance
  * @param {Stream} FileStream Read stream of file to upload
  * @returns {GridFSBucketWriteStream} Upload Stream
  * @example
@@ -188,7 +222,9 @@ schema.method('uploadStream', function (stream) {
 
 /**
  * Download a file from GridFS
- * @member {Function} GridFile#downloadStream
+ * @function downloadStream
+ * @memberof GridFile
+ * @instance
  * @param {Stream} FileStream Write stream of file to download into
  * @returns {GridFSBucketWriteStream} Download Stream
  * @example
@@ -211,7 +247,9 @@ schema.method('downloadStream', function (stream) {
 
 /**
  * Upload a file to GridFS
- * @member {Function} GridFile#upload
+ * @function upload
+ * @memberof GridFile
+ * @instance
  * @param {Stream} FileStream Read stream of file to upload
  * @param {Function} Callback Callback function
  * @returns {Promise<GridFile>} GridFile as a Promise
@@ -250,7 +288,9 @@ schema.method('upload', function (stream, callback) {
 
 /**
  * Download a file from GridFS
- * @member {Function} GridFile#download
+ * @function download
+ * @memberof GridFile
+ * @instance
  * @param {Stream} FileStream Write stream of file to download into
  * @param {Function} Callback Callback function
  * @returns {Promise<Void>} Promise

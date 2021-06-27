@@ -12,7 +12,8 @@
   "main": "src/gridFile.schema.js",
   "scripts": {
     "test": "nyc --reporter=lcov --reporter=text mocha --timeout 10000 test.js",
-    "doc": "documentation build src/gridFile.schema.js -f md > API.md"
+    "doc": "documentation build src/gridFile.schema.js -f html --github -o docs",
+    "doc:dev": "documentation serve --watch src/gridFile.schema.js"
   },
   "author": "abskmj@gmail.com",
   "homepage": "https://github.com/abskmj/gridfile",

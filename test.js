@@ -16,7 +16,7 @@ describe('Schema', () => {
 
   before(async () => {
     // create mongo connection
-    mongodb = new MongoMemoryServer()
+    mongodb = await MongoMemoryServer.create()
     const connectionUri = await mongodb.getUri()
 
     connection = await mongoose.connect(

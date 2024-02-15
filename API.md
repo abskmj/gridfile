@@ -2,39 +2,39 @@
 
 ### Table of Contents
 
--   [GridFile][1]
--   [GridFile#length][2]
--   [GridFile#chunkSize][3]
--   [GridFile#uploadDate][4]
--   [GridFile#md5][5]
--   [GridFile#filename][6]
--   [GridFile#contentType][7]
--   [GridFile#metadata][8]
--   [GridFile#aliases][9]
--   [GridFile#createdAt][10]
--   [GridFile#chunkSizeBytes][11]
--   [GridFile.getBucket][12]
-    -   [Examples][13]
--   [GridFile.findOneAndDelete][14]
-    -   [Examples][15]
--   [GridFile.findByIdAndDelete][16]
-    -   [Examples][17]
--   [GridFile#getUploadStream][18]
-    -   [Examples][19]
--   [GridFile#getDownloadStream][20]
-    -   [Examples][21]
--   [GridFile#uploadStream][22]
-    -   [Parameters][23]
-    -   [Examples][24]
--   [GridFile#downloadStream][25]
-    -   [Parameters][26]
-    -   [Examples][27]
--   [GridFile#upload][28]
-    -   [Parameters][29]
-    -   [Examples][30]
--   [GridFile#download][31]
-    -   [Parameters][32]
-    -   [Examples][33]
+*   [GridFile][1]
+*   [GridFile#length][2]
+*   [GridFile#chunkSize][3]
+*   [GridFile#uploadDate][4]
+*   [GridFile#md5][5]
+*   [GridFile#filename][6]
+*   [GridFile#contentType][7]
+*   [GridFile#metadata][8]
+*   [GridFile#aliases][9]
+*   [GridFile#createdAt][10]
+*   [GridFile#chunkSizeBytes][11]
+*   [GridFile.getBucket][12]
+    *   [Examples][13]
+*   [GridFile.findOneAndDelete][14]
+    *   [Examples][15]
+*   [GridFile.findByIdAndDelete][16]
+    *   [Examples][17]
+*   [GridFile#getUploadStream][18]
+    *   [Examples][19]
+*   [GridFile#getDownloadStream][20]
+    *   [Examples][21]
+*   [GridFile#uploadStream][22]
+    *   [Parameters][23]
+    *   [Examples][24]
+*   [GridFile#downloadStream][25]
+    *   [Parameters][26]
+    *   [Examples][27]
+*   [GridFile#upload][28]
+    *   [Parameters][29]
+    *   [Examples][30]
+*   [GridFile#download][31]
+    *   [Parameters][32]
+    *   [Examples][33]
 
 ## GridFile
 
@@ -127,7 +127,7 @@ Type: [Function][38]
 const deletedFile = await GridFile.findOneAndDelete({ filename: 'image.png' })
 ```
 
-Returns **[Promise][40]&lt;[GridFile][41]>** Deleted GridFile as a Promise
+Returns **[Promise][40]<[GridFile][1]>** Deleted GridFile as a Promise
 
 ## GridFile.findByIdAndDelete
 
@@ -141,7 +141,7 @@ Type: [Function][38]
 const deletedFile = await GridFile.findByIdAndDelete('some-id')
 ```
 
-Returns **[Promise][40]&lt;[GridFile][41]>** Deleted GridFile as a Promise
+Returns **[Promise][40]<[GridFile][1]>** Deleted GridFile as a Promise
 
 ## GridFile#getUploadStream
 
@@ -179,7 +179,7 @@ Type: [Function][38]
 
 ### Parameters
 
--   `FileStream` **[Stream][42]** Read stream of file to upload
+*   `FileStream` **[Stream][41]** Read stream of file to upload
 
 ### Examples
 
@@ -204,7 +204,7 @@ Type: [Function][38]
 
 ### Parameters
 
--   `FileStream` **[Stream][42]** Write stream of file to download into
+*   `FileStream` **[Stream][41]** Write stream of file to download into
 
 ### Examples
 
@@ -229,8 +229,8 @@ Type: [Function][38]
 
 ### Parameters
 
--   `FileStream` **[Stream][42]** Read stream of file to upload
--   `Callback` **[Function][38]** Callback function
+*   `FileStream` **[Stream][41]** Read stream of file to upload
+*   `Callback` **[Function][38]** Callback function
 
 ### Examples
 
@@ -252,7 +252,7 @@ gridFile.upload(filestream, (err, uploadedFile) => {
 })
 ```
 
-Returns **[Promise][40]&lt;[GridFile][41]>** GridFile as a Promise
+Returns **[Promise][40]<[GridFile][1]>** GridFile as a Promise
 
 ## GridFile#download
 
@@ -262,8 +262,8 @@ Type: [Function][38]
 
 ### Parameters
 
--   `FileStream` **[Stream][42]** Write stream of file to download into
--   `Callback` **[Function][38]** Callback function
+*   `FileStream` **[Stream][41]** Write stream of file to download into
+*   `Callback` **[Function][38]** Callback function
 
 ### Examples
 
@@ -285,7 +285,7 @@ gridFile.download(fileStream, (err){
 })
 ```
 
-Returns **[Promise][40]&lt;Void>** Promise
+Returns **[Promise][40]\<Void>** Promise
 
 [1]: #gridfile
 
@@ -367,6 +367,4 @@ Returns **[Promise][40]&lt;Void>** Promise
 
 [40]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-[41]: #gridfile
-
-[42]: https://nodejs.org/api/stream.html
+[41]: https://nodejs.org/api/stream.html

@@ -108,7 +108,7 @@ describe('Schema', () => {
       expect(stream._readableState.length).equals(uploadedFile.length)
     })
 
-    it('should delete a file from GridFS', async ()=>{
+    it('should delete a file from GridFS', async () => {
       const file = new GridFile()
 
       file.filename = 'package.json'

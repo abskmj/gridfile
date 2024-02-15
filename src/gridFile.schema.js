@@ -88,7 +88,7 @@ schema.virtual('chunkSizeBytes')
  * const bucket = GridFile.getBucket()
  */
 schema.static('getBucket', function () {
-  if (this.bucket) { } else {
+  if (!this.bucket) {
     // check the collection name
     assert(this.collection.collectionName.endsWith('.files'), 'Collection Name doesn\'t end with .files')
 
@@ -125,7 +125,7 @@ schema.static('findOneAndDelete', async function (query) {
  * @example
  * const deletedFile = await GridFile.findByIdAndDelete('some-id')
  */
-schema.static(`findByIdAndDelete`, function (id) {
+schema.static('findByIdAndDelete', function (id) {
   return this.findOneAndDelete({ _id: id })
 })
 

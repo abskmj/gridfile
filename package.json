@@ -23,13 +23,13 @@
     "mongoose": "*"
   },
   "devDependencies": {
-    "chai": "^4.3.0",
-    "documentation": "^14.0.0",
+    "chai": "^4.4.1",
+    "documentation": "^14.0.3",
     "memorystream": "^0.3.1",
-    "mocha": "^10.1.0",
-    "mongodb-memory-server": "^8.1.0",
+    "mocha": "^10.3.0",
+    "mongodb-memory-server": "^9.1.6",
     "mongoose": "^7.0.3",
     "nyc": "^15.1.0",
-    "standard": "^17.0.0"
+    "standard": "^17.1.0"
   }
 }

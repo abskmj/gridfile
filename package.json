@@ -12,7 +12,8 @@
   "main": "src/gridFile.schema.js",
   "scripts": {
     "test": "nyc --reporter=lcov --reporter=text mocha --timeout 10000 test.js",
-    "doc": "documentation build src/gridFile.schema.js -f md > API.md"
+    "doc": "documentation build src/gridFile.schema.js -f md > API.md",
+    "lint": "standard --fix"
   },
   "author": "abskmj@gmail.com",
   "homepage": "https://github.com/abskmj/gridfile",
@@ -23,13 +24,13 @@
     "mongoose": "*"
   },
   "devDependencies": {
-    "chai": "^4.4.1",
+    "chai": "^4.5.0",
     "documentation": "^14.0.3",
     "memorystream": "^0.3.1",
     "mocha": "^10.3.0",
     "mongodb-memory-server": "^9.1.6",
-    "mongoose": "^7.0.3",
-    "nyc": "^15.1.0",
+    "mongoose": "^8.7.2",
+    "nyc": "^17.1.0",
     "standard": "^17.1.0"
   }
 }

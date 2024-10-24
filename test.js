@@ -19,9 +19,7 @@ describe('Schema', () => {
     mongodb = await MongoMemoryServer.create()
     const connectionUri = await mongodb.getUri()
 
-    connection = await mongoose.connect(
-      connectionUri, { useNewUrlParser: true, useUnifiedTopology: true }
-    )
+    connection = await mongoose.connect(connectionUri)
 
     GridFileSchema = require('./src/gridFile.schema')
 

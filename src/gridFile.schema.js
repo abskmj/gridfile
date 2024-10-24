@@ -240,7 +240,7 @@ schema.method('upload', function (stream, callback) {
     })
 
     uploadStream.on('finish', (file) => {
-      if(!file) {
+      if (!file) {
         file = uploadStream.gridFSFile
       }
       const document = this.model.hydrate(file)

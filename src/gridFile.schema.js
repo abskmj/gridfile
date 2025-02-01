@@ -17,7 +17,7 @@ const schemaOptions = {
  *
  * const gridFile = new GridFile()
  * ```
- * @namespace GridFile
+ * @class GridFile
  */
 
 const schema = new Schema({
@@ -54,7 +54,7 @@ const schema = new Schema({
   metadata: { type: Schema.Types.Mixed },
   /**
    * Value is be used as `aliases` option when opening an upload stream: [GridFSBucket#openUploadStream](https://mongodb.github.io/node-mongodb-native/3.6/api/GridFSBucket.html#openUploadStream)
-   * @member {[String]} GridFile#aliases
+   * @member {String[]} GridFile#aliases
    */
   aliases: [{ type: String }]
 }, schemaOptions)
